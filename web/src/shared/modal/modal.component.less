@@ -1,0 +1,66 @@
+@import "../../styles/colors";
+
+.ModalContainer {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+
+    &__overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 11;
+        left: 0;
+        top: 0;
+        background-color: #000;
+        opacity: .65;
+    }
+
+    &__modal {
+        min-width: 100px;
+        min-height: 50px;
+        position: absolute;
+        z-index: 12;
+        background-color: #fff;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    &--is-opened {
+        display: block;
+    }
+}
+
+.Modal {
+    display: block;
+    width: 100%;
+
+    &__header {
+        width: 100%;
+        height: 45px;
+        background-color: #ddd;
+    }
+
+    &__title {
+        display: block;
+        margin: 0;
+        padding: 0 8px;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 45px;
+        text-align: center;
+        color: #fff;
+    }
+
+    &__content {
+        width: 100%;
+        min-height: 1px;
+    }
+}
