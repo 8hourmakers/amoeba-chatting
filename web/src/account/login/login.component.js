@@ -17,7 +17,9 @@ class LoginController {
         this.password = '';
     }
 
-    login() {
+    login(event) {
+        event.preventDefault();
+
         this.isRequesting = true;
 
         this.httpService
