@@ -1,0 +1,50 @@
+.chart {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.green-line {
+  stroke: green;
+}
+
+.red-line {
+  stroke: red;
+}
+
+svg text {
+  fill: #000;
+}
+
+.title {
+	font: 15px sans-serif;
+}
+
+.legend {
+	font: 10px sans-serif;
+}
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.x.axis.path {
+	display: none;
+}
