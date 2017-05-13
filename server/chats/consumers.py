@@ -29,7 +29,7 @@ def ws_connect(message):
     topic_id = get_topic_from_path(message.content['path'])
     if topic_id is not None:
         Group(topic_id).add(message.reply_channel)
-        update_chat_room_member_num.delay(topic_id)
+        update_chat_room_member_num(topic_id, 1)
 
 @channel_session
 def ws_disconnect(message):
@@ -37,6 +37,7 @@ def ws_disconnect(message):
     topic_id = get_topic_from_path(message.content['path'])
     if topic_id is not None:
         Group(topic_id).discard(message.reply_channel)
+        update_chat_room_member_num(topic_id, -1)
 
 
 @channel_session
@@ -47,7 +48,7 @@ def ws_receive(message):
             data = json.loads(message['text'])
             if data['action'] == 'new_chat_send':
                 payload = data['payload']
-                new_chat_receive.delay(topic_id, payload['user_id'], payload['content'])
+                new_chat_receive(topic_id, payload['user_id'], payload['content'])
     except ValueError:
         log.debug("ws message isn't json text=%s", message['text'])
         return

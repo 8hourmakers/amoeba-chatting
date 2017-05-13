@@ -40,9 +40,9 @@ def new_chat_receive(topic_id, user_id, content):
     })
 
 @app.task
-def update_chat_room_member_num(topic_id):
+def update_chat_room_member_num(topic_id, num_diff):
     topic = TopicItem.objects.get(id=topic_id)
-    topic.member_num += 1
+    topic.member_num += num_diff
     topic.save()
 
     Group(topic_id).send({
