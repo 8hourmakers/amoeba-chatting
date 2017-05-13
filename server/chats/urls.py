@@ -5,5 +5,5 @@ from .views import index, ChatItemListAPIView
 
 urlpatterns = [
     url(r'^$', index),
-    url(r'^(?P<topic_id>[0-9]+)$', ChatItemListAPIView.as_view()),
+    url(r'^(?P<topic_id>[0-9]+)/$', ChatItemListAPIView.as_view()),
 ]
