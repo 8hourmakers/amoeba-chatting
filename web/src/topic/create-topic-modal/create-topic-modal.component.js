@@ -36,18 +36,12 @@ class CreateTopicModalController {
         reader.readAsDataURL(this.imageFile);
     }
 
-    createTopic() {
-        this.isRequesting = true;
-
-        const formData = new FormData();
-        formData.append('file', this.imageFile);
-
+    upload(imageData) {
         this.httpService
             .post(apiUrl.image, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
+                data: {
+                    file: imageData,
                 },
-                data: formData,
             })
             .then((res) => {
                 const imageUrl = res.data.image_url;
@@ -70,6 +64,20 @@ class CreateTopicModalController {
             .finally(() => {
                 this.isRequesting = false;
             });
+    }
+
+    createTopic() {
+        this.isRequesting = true;
+
+        const fileReader = new FileReader();
+        let encodedFile = null;
+
+        fileReader.onload = (event) => {
+            encodedFile = event.target.result;
+            this.upload(encodedFile);
+        };
+
+        fileReader.readAsDataURL(this.imageFile);
     }
 }
 
