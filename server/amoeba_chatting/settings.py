@@ -54,7 +54,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-APPEND_SLASH = True
 ROOT_URLCONF = 'amoeba_chatting.urls'
 
 TEMPLATES = [
