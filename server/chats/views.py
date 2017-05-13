@@ -29,5 +29,5 @@ class ChatTiemListAPIView(ListAPIView):
         queryset_list = ChatItem.objects.filter(topic__id=topic_id).order_by("-timestamp")
         if from_id:
             queryset_list = queryset_list.filter(id < from_id)
-        return queryset_list
+        return queryset_list[:20]
 
