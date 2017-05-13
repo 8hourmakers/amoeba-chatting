@@ -28,6 +28,11 @@ class ImageUploadAPIView(APIView):
     def post(self, request, *args, **kwargs):
         print('post')
         image_file_str = request.data['file']
+        image_file_str_particle = image_file_str.split('base64,')
+        if len(image_file_str_particle) != 2:
+            return Response(status=HTTP_406_NOT_ACCEPTABLE)
+        image_file_str = image_file_str_particle[1]
+
         image_filename = get_random_string(length=32) + '.png'
         filepath = get_image_path(image_filename)
 
