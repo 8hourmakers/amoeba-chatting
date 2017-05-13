@@ -4,14 +4,12 @@
     </div>
 
     <div class="CreateTopicModal__image">
-        <img />
-        <input id="new-topic-image-input" ng-model="$ctrl.image" ng-change="$ctrl.onFileSelect($event)" type="file" />
-        <label for="new-topic-image-input" ng-bind="$ctrl.selectedFile"></label>
+        <span ng-style="{ 'background-image': 'url(' + $ctrl.imageFileSrc + ')' }"></span>
+        <app-file-selector on-file-select="$ctrl.onFileSelect(file)"></app-file-selector>
     </div>
 
     <div class="CreateTopicModal__name">
-        <label>토픽 이름</label>
-        <input ng-model="$ctrl.topicName" type="text" />
+        <input ng-model="$ctrl.topicName" placeholder="토픽 이름" type="text" />
     </div>
 
     <div class="CreateTopicModal__toolbar">
