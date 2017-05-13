@@ -16,7 +16,12 @@ import logging
 
 class TopicSerializer(ModelSerializer):
 
+    subtopic_num = SerializerMethodField()
+
     class Meta:
         model = TopicItem
-        fields = ('id', 'name', 'parent_id', 'member_num')
+        fields = ('id', 'name', 'parent_id', 'member_num', 'subtopic_num')
 
+    def get_subtopic_num(self, obj):
+        subtopic_num = TopicItem.objects.filter(parent_id=obj.id).count()
+        return subtopic_num

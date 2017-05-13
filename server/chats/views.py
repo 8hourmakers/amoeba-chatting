@@ -30,4 +30,3 @@ class ChatItemListAPIView(ListAPIView):
         if from_id:
             queryset_list = queryset_list.filter(id__lt=from_id)
         return queryset_list[:20]
-

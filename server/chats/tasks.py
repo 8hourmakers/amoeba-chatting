@@ -41,6 +41,9 @@ def new_chat_receive(topic_id, user_id, content):
 @app.task
 def update_chat_room_member_num(topic_id):
     topic = TopicItem.objects.get(id=topic_id)
+    topic.member_num += 1
+    topic.save()
+
     Group(topic_id).send({
         "text": json.dumps({
             "action": "update_chat_room_member_num",
