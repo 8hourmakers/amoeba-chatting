@@ -9,7 +9,7 @@ const apiUrl = {
     topicSearch: '/amoeba_chatting/api/topics/search',
     chats: template('/amoeba_chatting/api/chats/<%= topicId %>'),
     favorites: '/amoeba_chatting/api/favorites',
-    image: '/amoeba_chatting/api/image/',
+    image: '/amoeba_chatting/api/images/',
 };
 
 export default apiUrl;
