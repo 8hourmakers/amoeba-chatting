@@ -38,7 +38,7 @@ class ChatRoomController {
                 this.$scope.$apply();
                 this.$scope.$broadcast(this.scrollManagerConstants.actions.SCROLL_BOTTOM);
             })
-            .connect(`ws://8hourmakers.com/amoeba_chatting/ws/chat/${this.topicId}`, () => {
+            .connect(`ws://8hourmakers.com/amoeba_chatting/ws/chat/${this.topicId}/`, () => {
                 this.isChattingAvaliable = true;
             });
     }
