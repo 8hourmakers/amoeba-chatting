@@ -25,7 +25,7 @@ class FavoriteListCreateAPIView(ListCreateAPIView):
         data = request.data
         topic = get_object_or_404(TopicItem.objects.filter(id=data['topic_id']))
         if FavoriteItem.objects.filter(topic=topic, user=request.user).exists():
-            return Response("Already favorite topic", status=status.HTTP_409_CONFLICT)
+            return Response(data={"message":"Already favorite topic"}, status=status.HTTP_409_CONFLICT)
 
         favorite_item = FavoriteItem(
             user=request.user,
@@ -42,6 +42,8 @@ class FavoriteDestroyAPIView(DestroyAPIView):
     serializer_class = FavoriteItem
 
     def delete(self, request, favorite_id, *args, **kwargs):
+        if not FavoriteItem.objects.filter(id=favorite_id).exists():
+            return Response(data={'message': 'favorite not exists'}, status=status.HTTP_404_NOT_FOUND)
         FavoriteItem.objects.filter(id=favorite_id).delete()
-        return Response(status=status.HTTP_200_OK)
+        return Response(data={'results': 'Successfully Deleted'}, status=status.HTTP_200_OK)
 
