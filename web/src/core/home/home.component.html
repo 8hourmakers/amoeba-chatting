@@ -20,6 +20,7 @@
     <section class="Home__chatList">
         <div ng-repeat="topicItem in $ctrl.topicItems track by topicItem.id"
              ng-click="$ctrl.hrefTopicHome(topicItem)"
+             ng-style="{ 'background-image': 'url(' + topicItem.background_image_url + ')' }"
              class="Home__chatItem">
             <span ng-bind="topicItem.name"></span>
             <label></label>

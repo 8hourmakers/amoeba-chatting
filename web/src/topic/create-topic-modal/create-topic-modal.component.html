@@ -4,7 +4,9 @@
     </div>
 
     <div class="CreateTopicModal__image">
-
+        <img />
+        <input id="new-topic-image-input" ng-model="$ctrl.image" ng-change="$ctrl.onFileSelect($event)" type="file" />
+        <label for="new-topic-image-input" ng-bind="$ctrl.selectedFile"></label>
     </div>
 
     <div class="CreateTopicModal__name">
@@ -12,5 +14,8 @@
         <input ng-model="$ctrl.topicName" type="text" />
     </div>
 
-    <button ng-click="$ctrl.createTopic()" ng-disabled="$ctrl.isRequesting" class="CreateTopicModal__submit">만들기</button>
+    <div class="CreateTopicModal__toolbar">
+        <button ng-click="$ctrl.createTopic()" ng-disabled="$ctrl.isRequesting" class="CreateTopicModal__submit">확인</button>
+        <button ng-click="$ctrl.close()">취소</button>
+    </div>
 </app-modal>

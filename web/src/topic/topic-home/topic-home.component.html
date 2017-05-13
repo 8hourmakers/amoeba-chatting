@@ -17,7 +17,8 @@
         </div>
     </header>
 
-    <section class="TopicHome__front">
+    <section ng-style="{ 'background-image': 'url(' + $ctrl.topics.topicInfo.backgroundImageUrl + ')' }"
+             class="TopicHome__front">
         <div class="TopicHome__frontLabel">
             <label>전체채팅</label>
             <b></b>
@@ -38,7 +39,8 @@
         <li ng-repeat="subTopic in $ctrl.topics.subTopics track by subTopic.id"
             ng-click="$ctrl.enterSubTopic(subTopic)">
             <div class="SubTopicItem">
-                <div class="SubTopicItem__img"></div>
+                <div ng-style="{ 'background-image': 'url(' + subTopic.background_image_url + ')' }"
+                     class="SubTopicItem__img"></div>
 
                 <section class="SubTopicItem__content">
                     <div class="SubTopicItem__meta">

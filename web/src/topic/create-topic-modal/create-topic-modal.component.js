@@ -11,7 +11,18 @@ class CreateTopicModalController {
         this.isRequesting = false;
         this.isErrorCaught = false;
 
+        this.image = null;
+        this.selectedFile = '파일 선택';
         this.topicName = '';
+    }
+
+    close() {
+        this.closeModal();
+    }
+
+    onFileSelect($event) {
+        const file = $event.value.files[0];
+        console.log(file);
     }
 
     createTopic() {
@@ -25,7 +36,7 @@ class CreateTopicModalController {
                 },
             })
             .then((res) => {
-                this.closeModal({ value: res.data });
+                this.resolveModal({ value: res.data });
             })
             .catch(() => {
                 this.isErrorCaught = true;
@@ -45,6 +56,7 @@ const CreateTopicModalComponent = {
     bindings: {
         parentTopicId: '<?',
         closeModal: '&',
+        resolveModal: '&',
     },
     controller: CreateTopicModalController,
 };

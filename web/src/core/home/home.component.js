@@ -20,12 +20,7 @@ class HomeController {
             })
             .then((res) => {
                 res.data.forEach((topic) => {
-                    this.topicItems.push({
-                        id: topic.id,
-                        memberNum: topic.member_num,
-                        name: topic.name,
-                        parentId: topic.parent_id,
-                    });
+                    this.topicItems.push(topic);
                 });
             });
     }

@@ -48,7 +48,11 @@ class Modal {
 
         this.$modalScope.bindings = concatOptions.bindings;
 
-        this.$modalScope.closeModal = function closeModal(value) {
+        this.$modalScope.closeModal = function closeModal() {
+            modalServiceThis.close();
+        };
+
+        this.$modalScope.resolveModal = function resolveModal(value) {
             concatOptions.onResolve(value);
             modalServiceThis.close();
         };

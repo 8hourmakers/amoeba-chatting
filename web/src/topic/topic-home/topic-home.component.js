@@ -16,7 +16,11 @@ class TopicHomeController {
         this.topicId = this.$state.params.topicId;
         this.topics = new this.Topics(this.topicId);
 
-        this.previousState = this.$state.params.previousState;
+        if (this.$state.params.previousState.name) {
+            this.previousState = this.$state.params.previousState;
+        } else {
+            this.previousState = { name: 'home', params: {} };
+        }
 
         this.topicInfo = this.topics.topicInfo;
         this.subTopics = this.topics.subTopics;
