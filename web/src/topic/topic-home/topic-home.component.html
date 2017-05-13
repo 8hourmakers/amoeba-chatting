@@ -1,0 +1,60 @@
+<div class="TopicHome">
+    <header class="TopicHome__header">
+        <div class="TopicHome__headerLeft">
+            <button ng-click="$ctrl.back()" class="TopicHome__backBtn">
+                <i class="Icon" data-icon-name="back"></i>
+            </button>
+        </div>
+
+        <div class="TopicHome__headerRight">
+            <button class="TopicHome__searchBtn">
+                <i class="Icon" data-icon-name="search"></i>
+            </button>
+
+            <button class="TopicHome__favoriteBtn">
+                <i class="Icon" data-icon-name="favorite"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="TopicHome__front">
+        <div class="TopicHome__frontLabel">
+            <label>전체채팅</label>
+            <b></b>
+            <label>{{ $ctrl.topics.topicInfo.memberNum }}명 참여</label>
+        </div>
+
+        <h1 ng-bind="$ctrl.topics.topicInfo.name" class="TopicHome__frontTitle">loading...</h1>
+
+        <hr class="TopicHome__frontBorder" />
+
+        <div class="TopicHome__frontBottom">
+            <button ng-click="$ctrl.enterChatRoom()"
+                    class="TopicHome__frontEnterBtn">전체 채팅 참여하기</button>
+        </div>
+    </section>
+
+    <ul class="TopicHome__list">
+        <li ng-repeat="subTopic in $ctrl.topics.subTopics track by subTopic.id"
+            ng-click="$ctrl.enterSubTopic(subTopic)">
+            <div class="SubTopicItem">
+                <div class="SubTopicItem__img"></div>
+
+                <section class="SubTopicItem__content">
+                    <div class="SubTopicItem__meta">
+                        <h1 ng-bind="subTopic.name" class="SubTopicItem__title"></h1>
+                        <label class="SubTopicItem__subTopicNumbers"></label>
+                    </div>
+
+                    <div class="SubTopicItem__right">
+
+                    </div>
+                </section>
+            </div>
+        </li>
+    </ul>
+
+    <button ng-click="$ctrl.createTopic()" class="TopicHome__createTopicBtn">
+        <i class="Icon" data-icon-name="floating"></i>
+    </button>
+</div>

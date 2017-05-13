@@ -25,8 +25,9 @@ config.entry = {
 };
 
 config.output = {
-    path: paths.buildOutputPath,
+    path: paths.staticsPath,
     filename: '[name].js',
+    publicPath: '/amoeba_chatting/statics',
 };
 
 if (env.isDevelopment()) {
@@ -76,7 +77,7 @@ config.plugins = [
     }),
     new CopyWebpackPlugin([{
         from: paths.assetsPath,
-        to: './assets', // Relative from output path
+        to: '../assets', // Relative from output path
     }]),
     new CommonsChunkPlugin({
         name: 'vendor',
@@ -85,7 +86,7 @@ config.plugins = [
     }),
     new HtmlWebpackPlugin({
         template: paths.indexHtmlPath,
-        filename: 'index.html',
+        filename: paths.distIndexHtmlPath,
         inject: 'body',
         chunks: ['vendor', 'app'],
     }),

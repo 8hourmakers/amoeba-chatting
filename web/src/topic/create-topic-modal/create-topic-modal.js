@@ -6,8 +6,13 @@ class CreateTopicModal {
 
         this._options = {
             bindings: {},
-            template: '<app-create-topic-modal></app-create-topic-modal>',
+            template: '<app-create-topic-modal parent-topic-id="bindings.parentTopicId" close-modal="closeModal(value)"></app-create-topic-modal>',
         };
+    }
+
+    setParentTopicId(topicId) {
+        this._options.bindings.parentTopicId = topicId;
+        return this;
     }
 
     onResolve(onResolveCallback) {

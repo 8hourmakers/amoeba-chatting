@@ -1,11 +1,17 @@
 function topicRoutingConfig($stateProvider) {
     $stateProvider
-        .state('app.topicHome', {
+        .state('topicHome', {
             url: '/topic/:topicId',
+            params: {
+                previousState: true,
+            },
             template: '<app-topic-home></app-topic-home>',
         })
-        .state('app.chatRoom', {
+        .state('chatRoom', {
             url: '/chat/:topicId',
+            params: {
+                previousState: true,
+            },
             template: '<app-chat-room></app-chat-room>',
         });
 }

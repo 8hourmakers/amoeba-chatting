@@ -1,9 +1,9 @@
 <form class="Login">
-    <label for="login-id">ID</label>
-    <input id="login-id" ng-model="$ctrl.email" type="text" />
+    <label for="login-email">Email</label>
+    <input id="login-email" ng-model="$ctrl.email" type="text" />
 
     <label for="login-pw">PW</label>
     <input id="login-pw" ng-model="$ctrl.password" type="password" />
 
-    <input ng-click="$ctrl.login($event)" type="submit" />
+    <input ng-click="$ctrl.login($event)" type="submit" value="로그인" />
 </form>

@@ -12,6 +12,7 @@ class RegisterController {
     $onInit() {
         this.isRequesting = false;
         this.isErrorCaught = false;
+        this.errorMessage = '';
 
         this.username = '';
         this.email = '';
@@ -20,12 +21,13 @@ class RegisterController {
     }
 
     register() {
-        this.isRequesting = true;
-
         if (this.password !== this.passwordConfirm) {
             this.isErrorCaught = true;
+            this.errorMessage = '비밀번호가 일치하지 않습니다.';
             return;
         }
+
+        this.isRequesting = true;
 
         this.httpService
             .post(apiUrl.users, {
@@ -44,14 +46,11 @@ class RegisterController {
             })
             .catch(() => {
                 this.isErrorCaught = true;
+                this.errorMessage = '유효하지 않은 값입니다.';
             })
             .finally(() => {
                 this.isRequesting = false;
-            })
-    }
-
-    backToMain() {
-        this.$state.go('main');
+            });
     }
 }
 

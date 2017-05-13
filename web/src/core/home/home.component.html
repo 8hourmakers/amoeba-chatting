@@ -1,3 +1,28 @@
 <div class="Home">
-    Home
+    <header class="Home__header">
+        <div class="Home__headerLeft">
+            <button class="Home__chatBtn">
+                <i class="Icon" data-icon-name="chat"></i>
+            </button>
+        </div>
+
+        <div class="Home__headerRight">
+            <button class="Home__searchBtn">
+                <i class="Icon" data-icon-name="search"></i>
+            </button>
+
+            <button class="Home__favoriteBtn">
+                <i class="Icon" data-icon-name="favorite"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="Home__chatList">
+        <div ng-repeat="topicItem in $ctrl.topicItems track by topicItem.id"
+             ng-click="$ctrl.hrefTopicHome(topicItem)"
+             class="Home__chatItem">
+            <span ng-bind="topicItem.name"></span>
+            <label></label>
+        </div>
+    </section>
 </div>

@@ -6,14 +6,17 @@ class TopicHomeController {
         this.$q = $q;
         this.$state = $state;
         this.createTopicModal = new CreateTopicModal();
-
-        this.topicId = $state.params.topicId;
-        this.topics = new Topics(this.topicId);
+        this.Topics = Topics;
     }
 
     $onInit() {
         this.isInitialized = false;
         this.isErrorCaught = false;
+
+        this.topicId = this.$state.params.topicId;
+        this.topics = new this.Topics(this.topicId);
+
+        this.previousState = this.$state.params.previousState;
 
         this.topicInfo = this.topics.topicInfo;
         this.subTopics = this.topics.subTopics;
@@ -27,17 +30,36 @@ class TopicHomeController {
             .catch(() => { this.isErrorCaught = true; });
     }
 
+    back() {
+        this.$state.go(this.previousState.name, this.previousState.params);
+    }
+
     enterChatRoom() {
-        this.$state.go('app.chatRoom', { topicId: this.topicId });
+        this.$state.go('chatRoom', {
+            topicId: this.topicId,
+            previousState: {
+                name: 'topicHome',
+                params: this.$state.params,
+            },
+        });
     }
 
     enterSubTopic(subTopic) {
-        this.$state.go('app.topicHome', { topicId: subTopic.id });
+        this.$state.go('topicHome', {
+            topicId: subTopic.id,
+            previousState: {
+                name: 'topicHome',
+                params: this.$state.params,
+            },
+        });
     }
 
     createTopic() {
         this.createTopicModal
-            .onResolve(this.topics.createTopic)
+            .setParentTopicId(this.topicId)
+            .onResolve((newTopic) => {
+                this.topics.subTopics.push(newTopic);
+            })
             .open();
     }
 }

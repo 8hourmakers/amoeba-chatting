@@ -1,3 +1,38 @@
 <div class="ChatRoom">
+    <header class="ChatRoom__header">
+        <div class="ChatRoom__headerLeft">
+            <button ng-click="$ctrl.back()" class="ChatRoom__backBtn">
+                <i class="Icon" data-icon-name="back"></i>
+            </button>
+        </div>
 
+        <div class="ChatRoom__headerRight">
+            <button class="ChatRoom__searchBtn">
+                <i class="Icon" data-icon-name="search"></i>
+            </button>
+
+            <button class="ChatRoom__favoriteBtn">
+                <i class="Icon" data-icon-name="favorite"></i>
+            </button>
+        </div>
+    </header>
+
+    <section app-scroll-manager
+             scroll-threshold="0"
+             on-infinite-scroll="$ctrl.loadMoreChats()"
+             class="ChatRoom__list">
+        <div ng-repeat="chat in $ctrl.chatting.chats track by chat.id"
+              ng-class="{ 'Chat--is-mine': $ctrl.isSenderSame(chat) }"
+              data-chat-index="{{ $index }}"
+              class="Chat">
+            <label ng-bind="chat.user.username"></label>
+            <span ng-bind="chat.content"></span>
+        </div>
+    </section>
+
+
+    <footer class="ChatRoom__input">
+        <input ng-keypress="$ctrl.onInput($event)" ng-model="$ctrl.content" type="text" />
+        <button ng-disabled="!$ctrl.isAvaliable()" ng-click="$ctrl.sendChat($ctrl.content)">전송</button>
+    </footer>
 </div>

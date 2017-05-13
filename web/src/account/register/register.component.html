@@ -1,3 +1,23 @@
-<form class="Register">
+<div class="Register">
+    <h1 class="Register__title">SiS TALK</h1>
 
-</form>
+    <div ng-if="$ctrl.isErrorCaught" class="Register__error">
+        <span ng-bind="$ctrl.errorMessage"></span>
+    </div>
+
+    <div class="Register__form">
+        <input ng-model="$ctrl.email" type="text" placeholder="이메일" />
+        <input ng-model="$ctrl.username" type="text" placeholder="닉네임" />
+        <input ng-model="$ctrl.password" type="password" placeholder="비밀번호" />
+        <input ng-model="$ctrl.passwordConfirm" type="password" placeholder="비밀번호 확인" />
+    </div>
+
+    <div class="Register__foot">
+        <button ng-disabled="$ctrl.isRequesting"
+                ng-click="$ctrl.register()"
+                class="Register__registerBtn">회원가입</button>
+        <div class="Register__help">
+            <a ui-sref="main">로그인</a>
+        </div>
+    </div>
+</div>
