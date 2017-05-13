@@ -30,7 +30,8 @@ def new_chat_receive(topic_id, user_id, content):
                 'content': content,
                 "user": {
                     'id': chat_item.user.id,
-                    'username': chat_item.user.username
+                    'username': chat_item.user.username,
+                    'profile_image_url': chat_item.user.profile_image_url,
                 },
                 "timestamp": chat_item.timestamp.strftime("%Y-%m-%d %H:%M:%S.%f")
             },

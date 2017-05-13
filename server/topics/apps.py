@@ -5,7 +5,6 @@ class TopicsConfig(AppConfig):
     verbose_name = "Amoeba Chatting"
 
     def ready(self):
-        print('ready')
         from topics.models import TopicItem
         if not TopicItem.objects.filter(id=1).exists():
             topic_item = TopicItem.objects.create(name='ROOT')

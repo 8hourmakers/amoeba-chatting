@@ -20,7 +20,7 @@ class TopicSerializer(ModelSerializer):
 
     class Meta:
         model = TopicItem
-        fields = ('id', 'name', 'parent_id', 'member_num', 'subtopic_num')
+        fields = ('id', 'name', 'parent_id', 'member_num', 'subtopic_num', 'background_image_url')
 
     def get_subtopic_num(self, obj):
         subtopic_num = TopicItem.objects.filter(parent_id=obj.id).count()
