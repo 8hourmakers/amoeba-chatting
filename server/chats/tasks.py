@@ -11,11 +11,11 @@ import time as ptime
 log = logging.getLogger(__name__)
 
 @app.task
-def new_chat_receive(topic_id, sender_id, content):
+def new_chat_receive(topic_id, user_id, content):
     print('new chat recieve')
     chat_item = ChatItem.objects.create(
         topic_id=topic_id,
-        user_id=sender_id,
+        user_id=user_id,
         content=content
     )
     chat_item.save()
@@ -28,7 +28,7 @@ def new_chat_receive(topic_id, sender_id, content):
                 "id": chat_item.id,
                 "topic_id": chat_item.topic.id,
                 'content': content,
-                "sender": {
+                "user": {
                     'id': chat_item.user.id,
                     'username': chat_item.user.username
                 }
