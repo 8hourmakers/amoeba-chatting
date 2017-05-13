@@ -23,9 +23,10 @@ class ChatTiemListAPIView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ChatItemSerializer
 
-    def get_queryset(self, topic_id, *args, **kwargs):
+    def get_queryset(self, *args, **kwargs):
+        topic_id = self.kwargs['topic_id']
         from_id = self.request.GET.get('from_id')
-        queryset_list = ChatItem.objects.order_by("-timestamp")
+        queryset_list = ChatItem.objects.filter(topic__id=topic_id).order_by("-timestamp")
         if from_id:
             queryset_list = queryset_list.filter(id < from_id)
         return queryset_list
