@@ -27,4 +27,4 @@ class ChatItemSerializer(ModelSerializer):
         fields = ['id', 'user', 'topic', 'content', 'timestamp']
 
     def get_timestamp(self, obj):
-        return obj.timestamp.strftime("%Y-%m-%d %H:%M:%S")
+        return obj.timestamp.strftime("%Y-%m-%d %H:%M:%S.%f")

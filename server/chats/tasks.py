@@ -33,7 +33,7 @@ def new_chat_receive(topic_id, user_id, content):
                     'username': chat_item.user.username
                 }
             },
-            "timestamp": chat_item.timestamp.strftime("%Y-%m-%d %H:%M:%S")
+            "timestamp": chat_item.timestamp.strftime("%Y-%m-%d %H:%M:%S.%f")
         })
     })
 
