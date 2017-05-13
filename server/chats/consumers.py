@@ -46,10 +46,8 @@ def ws_receive(message):
         if topic_id is not None:
             data = json.loads(message['text'])
             if data['action'] == 'new_chat_send':
-                print('new chat send')
                 payload = data['payload']
                 new_chat_receive.delay(topic_id, payload['user_id'], payload['content'])
-        print(data)
     except ValueError:
         log.debug("ws message isn't json text=%s", message['text'])
         return
