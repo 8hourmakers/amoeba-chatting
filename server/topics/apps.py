@@ -9,7 +9,7 @@ INIT_TOPICS = [
     {
         'parent_id': 1,
         'name': '19',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026195/e3c26ba0-3831-11e7-900d-76f5e888c934.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026375/b28e29e0-3834-11e7-8fbf-7da85189f660.png'
     },
     {
         'parent_id': 1,
