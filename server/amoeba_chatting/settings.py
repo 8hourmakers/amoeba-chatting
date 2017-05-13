@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'favorites',
     'topics',
     'users',
+    'images',
     'channels'
 ]
 
