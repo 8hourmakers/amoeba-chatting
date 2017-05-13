@@ -1,0 +1,118 @@
+@import "../../styles/colors";
+
+.Register {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5vh;
+    width: 100%;
+    min-height: 100%;
+    background-color: @color-main;
+
+    &__title {
+        display: block;
+        margin: 0;
+        padding: 25px 0;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 20px;
+        color: @color-white;
+        text-align: center;
+    }
+
+    &__error {
+        display: block;
+        width: 75vw;
+        padding: 14px 18px;
+        margin: 0 auto 20px auto;
+        max-width: 480px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.25;
+        border-radius: 7.5px;
+        color: @color-white;
+        background-color: #e84e3a;
+    }
+
+    &__foot {
+        display: block;
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 auto;
+        max-width: 520px;
+    }
+
+    &__form {
+        flex: 1;
+        display: block;
+        width: 75vw;
+        max-width: 480px;
+        margin: 0 auto;
+
+        & > input {
+            display: block;
+            margin: 0 0 15px 0;
+            width: 100%;
+            height: 45px;
+            padding: 0 14px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 43px;
+            color: @color-white;
+            border: none;
+            outline: 0;
+            background-color: #ca3ae8;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &::placeholder {
+                color: @color-white;
+                opacity: .5;
+            }
+        }
+    }
+
+    &__help {
+        display: flex;
+        width: 100%;
+        align-self: center;
+        justify-content: center;
+
+        & > span {
+            margin-right: 16px;
+            font-size: 12px;
+            font-weight: 400;
+            color: @color-white;
+        }
+
+        & > a {
+            font-size: 12px;
+            font-weight: 500;
+            color: #f6e618;
+        }
+    }
+
+    &__registerBtn {
+        display: block;
+        margin: 0 0 15px 0;
+        padding: 0;
+        width: 100%;
+        height: 45px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 43px;
+        color: @color-white;
+        text-align: center;
+        border-radius: 12px;
+        outline: 0;
+        border: none;
+        background-color: #d558ef;
+        transition: all .2s ease;
+        cursor: pointer;
+
+        &:hover {
+            opacity: .65;
+        }
+    }
+}

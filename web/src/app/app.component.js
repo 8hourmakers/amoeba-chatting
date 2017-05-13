@@ -5,6 +5,9 @@ class AppController {
     constructor($state) {
         this.$state = $state;
     }
+
+    $onInit() {
+    }
 }
 
 AppController.$inject = [

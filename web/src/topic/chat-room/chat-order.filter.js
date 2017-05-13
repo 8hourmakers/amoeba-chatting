@@ -2,9 +2,9 @@ import sortBy from 'lodash/sortBy';
 
 function chatOrderFilter(chats) {
     return sortBy(chats, (chat) => {
-        const timestamp = new Date(chat.register_timestamp).getTime();
+        const timestamp = new Date(chat.timestamp).getTime();
 
-        return -timestamp;
+        return -1 * timestamp;
     });
 }
 

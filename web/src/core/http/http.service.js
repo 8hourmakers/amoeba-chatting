@@ -19,7 +19,7 @@ class HttpService {
         if (options.ensureAuthorized) {
             const tokenValue = this.tokenService.getTokenValue();
 
-            copiedOptions.headers.Authorization = `JWT ${tokenValue}`;
+            copiedOptions.headers.Authorization = `token ${tokenValue}`;
         }
 
         return copiedOptions;

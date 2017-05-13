@@ -1,8 +1,27 @@
 <div class="Main">
-    <h1 class="Main__title"></h1>
+    <h1 class="Main__title">SiS TALK</h1>
 
-    <div class="Main__entrance">
-        <button ui-sref="login" class="Main__loginBtn"></button>
-        <button ui-sref="register" class="Main__registerBtn"></button>
+    <img src="/amoeba_chatting/assets/images/inner-logo.png" class="Main__logo" />
+
+    <div class="Main__form">
+        <div class="Main__input">
+            <label class="Main__inputLeftLabel"></label>
+            <input ng-model="$ctrl.email" type="text" placeholder="이메일" />
+            <label class="Main__inputRightLabel"></label>
+        </div>
+
+        <div class="Main__input">
+            <label class="Main__inputLeftLabel"></label>
+            <input ng-model="$ctrl.password" type="password" placeholder="비밀번호" />
+            <label class="Main__inputRightLabel"></label>
+        </div>
+    </div>
+
+    <div class="Main__foot">
+        <button ng-click="$ctrl.login()" class="Main__loginBtn">로그인</button>
+        <div class="Main__help">
+            <span>회원이 아니세요?</span>
+            <a ui-sref="register">가입하기</a>
+        </div>
     </div>
 </div>

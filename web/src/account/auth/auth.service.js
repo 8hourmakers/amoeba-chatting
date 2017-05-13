@@ -8,6 +8,8 @@ class AuthService {
         this.authConstants = authConstants;
 
         this.authorizedState = this.authConstants.state.UNKNOWN;
+
+        this.user = null;
     }
 
     isAuthorized() {
@@ -20,8 +22,10 @@ class AuthService {
 
         this.httpService
             .get(apiUrl.userAuthToken)
-            .then(() => {
+            .then((res) => {
                 this.authorizedState = this.authConstants.state.AUTHORIZED;
+                this.user = res.data;
+
                 deferred.resolve();
             })
             .catch(() => {
@@ -51,6 +55,10 @@ class AuthService {
         }
 
         return deferred.promise;
+    }
+
+    getUser() {
+        return this.user;
     }
 }
 

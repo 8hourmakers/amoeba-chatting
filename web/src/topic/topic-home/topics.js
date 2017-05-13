@@ -24,20 +24,9 @@ class Topics {
 
     getSubTopics() {
         return this.httpService
-            .get(apiUrl.topics, { params: { parent: this.topicId } })
+            .get(apiUrl.topics, { params: { parent_id: this.topicId } })
             .then((res) => {
                 res.data.forEach(subTopic => this.subTopics.push(subTopic));
-            });
-    }
-
-    createTopic(topicName) {
-        return this.httpService
-            .post(apiUrl.topics, { params: { parent: this.topicId } })
-            .then(() => {
-                this.subTopics.push({
-                    name: topicName,
-                    member_num: 0,
-                });
             });
     }
 }
