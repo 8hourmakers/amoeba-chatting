@@ -42,7 +42,7 @@ class ImageUploadAPIView(APIView):
 
             # default_storage.save(filepath, ContentFile(image_file.read()))
 
-        image_url = getattr(settings, "HOST_ADDRESS", None) + 'amoeba_chatting/api/image/' + image_filename + '/'
+        image_url = getattr(settings, "HOST_ADDRESS", None) + 'amoeba_chatting/api/images/' + image_filename + '/'
         return Response({'image_url': image_url}, status=HTTP_200_OK)
 
 
