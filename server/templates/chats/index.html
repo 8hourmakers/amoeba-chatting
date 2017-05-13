@@ -76,6 +76,9 @@ $(function() {
     socket.onmessage = function(message) {
         console.log("Got message: " + message.data);
         var data = JSON.parse(message.data);
+        if(data.action == 'new_chat_receive'){
+            console.log(data.payload);
+        }
     };
 
     $('#chatform').on('submit', function(e) {
@@ -90,28 +93,9 @@ $(function() {
                 content: content
             }
         }));
-        console.log(content);
     });
 });
 
-/*
-$("#chat_send").change(function() {
-    var stockCode = $(this).attr('stockCode');
-
-    if(this.checked) {
-        console.log('checked');
-        $.getJSON('/api/stock/favorite/' + stockCode + '/', function (data) {
-            console.log(data);
-        });
-    }
-    else {
-        console.log('unchecked');
-        $.getJSON('/api/stock/unfavorite/' + stockCode + '/', function (data) {
-            console.log(data);
-        });
-    }
-});
-*/
 </script>
 
 

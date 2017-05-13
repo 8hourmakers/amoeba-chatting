@@ -27,6 +27,7 @@ def new_chat_receive(topic_id, sender_id, content):
             "payload": {
                 "id": chat_item.id,
                 "topic_id": chat_item.topic.id,
+                'content': content,
                 "sender": {
                     'id': chat_item.user.id,
                     'username': chat_item.user.username
