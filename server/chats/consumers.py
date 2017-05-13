@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 def get_topic_from_path(message_path):
     path_particle = message_path.split('/')
-    if len(path_particle) == 5:
+    if len(path_particle) == 6:
         group_name = path_particle[-1]
         return group_name
     else:
