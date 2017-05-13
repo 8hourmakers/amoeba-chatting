@@ -38,7 +38,7 @@ INIT_TOPICS = [
     {
         'parent_id': 1,
         'name': '게임',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026196/e911b7d2-3831-11e7-997f-318a84e809b8.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026269/1d8894da-3833-11e7-8252-84c8b8f2b372.jpg'
     },
 
     {
