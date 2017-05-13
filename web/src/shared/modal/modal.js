@@ -33,6 +33,13 @@ class Modal {
         document.body.appendChild(containerElem);
 
         this.$containerElem = angular.element(containerElem);
+
+        this.$rootScope.$on('$stateChangeStart', (event) => {
+            if (this.isModalOpened) {
+                event.preventDefault();
+                this.close();
+            }
+        });
     }
 
     open(options) {
@@ -65,11 +72,6 @@ class Modal {
             this.$containerElem.removeClass('ModalContainer--is-closed');
             this.$containerElem.addClass('ModalContainer--is-opened');
         });
-
-        this.$rootScope.$on('$stateChangeStart', (event) => {
-            event.preventDefault();
-            this.close();
-        });
     }
 
     close() {
@@ -77,9 +79,8 @@ class Modal {
             return;
         }
 
-        this.$modalElem.remove();
         this.$modalScope.$destroy();
-        this.$modalScope = null;
+        this.$modalElem.remove();
 
         this.$containerElem.removeClass('ModalContainer--is-opened');
         this.$containerElem.addClass('ModalContainer--is-closed');

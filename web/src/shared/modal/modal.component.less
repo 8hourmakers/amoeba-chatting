@@ -34,6 +34,17 @@
     &--is-opened {
         display: block;
     }
+
+    &--is-closed {
+        pointer-events: none;
+        z-index: -9999;
+
+        .ModalContainer__overlay {
+            display: none;
+            pointer-events: none;
+            z-index: -9999;
+        }
+    }
 }
 
 .Modal {

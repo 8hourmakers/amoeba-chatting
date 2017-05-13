@@ -22,7 +22,6 @@ class CreateTopicModal {
 
     open() {
         this.modal.open(this._options);
-        return this;
     }
 }
 
