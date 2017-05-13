@@ -3,7 +3,8 @@ import template from './create-topic-modal.component.html';
 import './create-topic-modal.component.less';
 
 class CreateTopicModalController {
-    constructor(httpService) {
+    constructor($scope, httpService) {
+        this.$scope = $scope;
         this.httpService = httpService;
     }
 
@@ -11,8 +12,8 @@ class CreateTopicModalController {
         this.isRequesting = false;
         this.isErrorCaught = false;
 
-        this.image = null;
-        this.selectedFile = '파일 선택';
+        this.imageFile = null;
+        this.imageFileSrc = '/amoeba_chatting/assets/images/dummy.png';
         this.topicName = '';
     }
 
@@ -20,20 +21,45 @@ class CreateTopicModalController {
         this.closeModal();
     }
 
-    onFileSelect($event) {
-        const file = $event.value.files[0];
-        console.log(file);
+    onFileSelect(file) {
+        const that = this;
+
+        this.imageFile = file;
+
+        const reader = new FileReader();
+
+        reader.onload = function onFileLoad(event) {
+            that.imageFileSrc = event.target.result;
+            that.$scope.$apply();
+        };
+
+        reader.readAsDataURL(this.imageFile);
     }
 
     createTopic() {
         this.isRequesting = true;
 
+        const formData = new FormData();
+        formData.append('file', this.imageFile);
+
         this.httpService
-            .post(apiUrl.topics, {
-                data: {
-                    name: this.topicName,
-                    parent_id: this.parentTopicId,
+            .post(apiUrl.image, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
                 },
+                data: formData,
+            })
+            .then((res) => {
+                const imageUrl = res.data.image_url;
+
+                return this.httpService
+                    .post(apiUrl.topics, {
+                        data: {
+                            name: this.topicName,
+                            parent_id: this.parentTopicId,
+                            background_image_url: imageUrl,
+                        },
+                    });
             })
             .then((res) => {
                 this.resolveModal({ value: res.data });
@@ -48,6 +74,7 @@ class CreateTopicModalController {
 }
 
 CreateTopicModalController.$inject = [
+    '$scope',
     'httpService',
 ];
 
