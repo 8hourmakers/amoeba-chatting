@@ -1,4 +1,5 @@
 import os
+import base64
 from rest_framework.views import APIView
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST, HTTP_204_NO_CONTENT, HTTP_406_NOT_ACCEPTABLE
 
@@ -11,9 +12,6 @@ from rest_framework.response import Response
 
 from rest_framework.permissions import (
     AllowAny,
-    IsAuthenticated,
-    IsAdminUser,
-    IsAuthenticatedOrReadOnly,
 
     )
 IMAGE_DIRS = getattr(settings, "IMAGE_DIRS", None)
@@ -29,13 +27,15 @@ class ImageUploadAPIView(APIView):
 
     def post(self, request, *args, **kwargs):
         print('post')
-        image_file = request.FILES['file']
-        print(image_file)
+        image_file_str = request.data['file']
         image_filename = get_random_string(length=32) + '.png'
         filepath = get_image_path(image_filename)
 
         if not os.path.exists(filepath):
-            default_storage.save(filepath, ContentFile(image_file.read()))
+            with open(filepath, "wb") as fh:
+                fh.write(base64.decodebytes(image_file_str.encode()))
+
+            # default_storage.save(filepath, ContentFile(image_file.read()))
 
         image_url = getattr(settings, "HOST_ADDRESS", None) + 'amoeba_chatting/api/image/' + image_filename + '/'
         return Response({'image_url': image_url}, status=HTTP_200_OK)

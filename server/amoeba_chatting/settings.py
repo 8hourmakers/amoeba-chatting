@@ -89,6 +89,11 @@ DATABASES = {
 
 
 REST_FRAMEWORK = {
+
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FileUploadParser'
+    ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
@@ -98,7 +103,7 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PERMISSION_CLASSES": (
         'rest_framework.permissions.AllowAny'
-    )
+    ),
 }
 
 # Use custom model
@@ -145,12 +150,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "server", "static")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
-IMAGE_DIRS = os.path.join(MEDIA_ROOT, 'image')
-HOST_ADDRESS = 'localhost:8001/'
+IMAGE_DIRS = os.path.join(STATIC_ROOT, 'image')
+HOST_ADDRESS = 'http://8hourmakers.com/'
 
 
 # Channel settings
