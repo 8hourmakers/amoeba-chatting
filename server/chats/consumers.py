@@ -4,9 +4,18 @@ from channels.sessions import channel_session
 from .models import ChatItem
 from topics.models import TopicItem
 from channels import Group
+from .tasks import new_chat_receive, update_chat_room_member_num
 
 log = logging.getLogger(__name__)
 
+
+def get_topic_from_path(message_path):
+    path_particle = message_path.split('/')
+    if len(path_particle) == 5:
+        group_name = path_particle[-1]
+        return group_name
+    else:
+        return None
 
 @channel_session
 def ws_connect(message):
@@ -17,57 +26,31 @@ def ws_connect(message):
             "reply_channel": message.reply_channel.name,
         })
     })
-    path_particle = message.content['path'].split('/')
-    print('path', path_particle)
-    if len(path_particle) == 5:
-        group_name = path_particle[-1]
-        Group(group_name).add(message.reply_channel)
-
-
+    topic_id = get_topic_from_path(message.content['path'])
+    if topic_id is not None:
+        Group(topic_id).add(message.reply_channel)
+        update_chat_room_member_num.delay(topic_id)
 
 @channel_session
 def ws_disconnect(message):
     print('ws disconnected', message.content)
-    path_particle = message.content['path'].split('/')
-    if len(path_particle) == 5:
-        group_name = path_particle[-1]
-        print('discard', group_name)
-        Group(group_name).discard(message.reply_channel)
+    topic_id = get_topic_from_path(message.content['path'])
+    if topic_id is not None:
+        Group(topic_id).discard(message.reply_channel)
 
 
 @channel_session
 def ws_receive(message):
     try:
-        data = json.loads(message['text'])
+        topic_id = get_topic_from_path(message.content['path'])
+        if topic_id is not None:
+            data = json.loads(message['text'])
+            if data['action'] == 'new_chat_send':
+                print('new chat send')
+                payload = data['payload']
+                new_chat_receive.delay(topic_id, payload['sender_id'], payload['content'])
         print(data)
     except ValueError:
         log.debug("ws message isn't json text=%s", message['text'])
         return
 
-
-def new_chat_receive(chat_id):
-    chat_item = ChatItem.objects.get(id=chat_id)
-    print('Channel Name : ', chat_item.topic.name)
-    Group(chat_item.topic.id).send({
-        "text": json.dumps({
-            "action": "new_chat_receive",
-            "payload": {
-                "id": chat_item.id,
-                "topic_id": chat_item.topic.id,
-                "sender": chat_item.user
-            },
-            "timestamp": chat_item.timestamp.strftime("%Y-%M-%D %h:%m:%s")
-        })
-    })
-
-def update_chat_room_member_num(topic_id):
-    topic = TopicItem.objects.get(id=topic_id)
-    Group(topic.id).send({
-        "text": json.dumps({
-            "action": "update_chat_room_member_num",
-            "payload": {
-                "topic_id": topic.id,
-                "member_num": topic.member_num
-            }
-        })
-    })
