@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -29,7 +28,6 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -101,6 +99,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny'
     )
 }
+
 # Use custom model
 AUTH_USER_MODEL = 'users.User'
 
@@ -175,3 +174,4 @@ CELERY_IGNORE_RESULT = True
 CELERYD_CONCURRENCY = 1 #recommand the CPU count
 CELERYD_PREFETCH_MULTIPLIER = 1 #recommand 4
 # CELERY_CREATE_MISSING_QUEUES = True
+

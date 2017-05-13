@@ -74,7 +74,9 @@ class UserLoginAPIView(APIView):
         return Response(status=status.HTTP_200_OK)
 
 
-
 class UserTokenAPIView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
+
+    def get(self, request, *args, **kwargs):
+        return Response(status=status.HTTP_200_OK)
