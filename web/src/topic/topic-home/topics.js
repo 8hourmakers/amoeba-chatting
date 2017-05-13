@@ -19,6 +19,7 @@ class Topics {
             .then((res) => {
                 this.topicInfo.name = res.data.name;
                 this.topicInfo.member_num = res.data.member_num;
+                this.topicInfo.backgroundImageUrl = res.data.background_image_url;
             });
     }
 
