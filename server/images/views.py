@@ -28,7 +28,9 @@ class ImageUploadAPIView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
+        print('post')
         image_file = request.FILES['file']
+        print(image_file)
         image_filename = get_random_string(length=32) + '.png'
         filepath = get_image_path(image_filename)
 

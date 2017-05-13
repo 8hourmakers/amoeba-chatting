@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^amoeba_chatting/api/users/', include('users.urls')),
     url(r'^amoeba_chatting/api/topics/', include('topics.urls')),
     url(r'^amoeba_chatting/api/chats/', include('chats.urls')),
-    url(r'^amoeba_chatting/api/favorites/', include('favorites.urls'))
+    url(r'^amoeba_chatting/api/favorites/', include('favorites.urls')),
+    url(r'^amoeba_chatting/api/images/', include('images.urls'))
 ]

@@ -146,6 +146,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+IMAGE_DIRS = os.path.join(MEDIA_ROOT, 'image')
+HOST_ADDRESS = 'localhost:8001/'
 
 
 # Channel settings
