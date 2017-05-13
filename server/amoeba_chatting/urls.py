@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^amoeba_chatting/admin/', admin.site.urls),
     url(r'^amoeba_chatting/api/users/', include('users.urls')),
     url(r'^amoeba_chatting/api/topics/', include('topics.urls')),
     url(r'^amoeba_chatting/api/chats/', include('chats.urls')),
