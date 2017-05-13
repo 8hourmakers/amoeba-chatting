@@ -4,77 +4,77 @@ INIT_TOPICS = [
     {
         'parent_id': 1,
         'name': '음식',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025654/463b384e-3827-11e7-8eeb-8dd2a5471e0a.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026193/d78dcec4-3831-11e7-8cf3-a1df05ff8635.png'
     },
     {
         'parent_id': 1,
         'name': '19',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025657/5c71065c-3827-11e7-9372-14dca31b54e5.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026375/b28e29e0-3834-11e7-8fbf-7da85189f660.png'
     },
     {
         'parent_id': 1,
         'name': '덕질',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025658/707cd7ac-3827-11e7-90c1-9c393ef95cb7.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026196/e911b7d2-3831-11e7-997f-318a84e809b8.png'
     },
 
     {
         'parent_id': 1,
         'name': '뷰티',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025661/8811ad16-3827-11e7-8e31-0f02217cc8d3.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026197/ef9c4a36-3831-11e7-9c59-bf5a8aa57cf9.png'
     },
 
     {
         'parent_id': 1,
         'name': '이슈',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025665/9bdfdd90-3827-11e7-8e04-b17ab3f1b26b.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026201/f556479c-3831-11e7-8d67-6eefe8c40a8e.png'
     },
 
     {
         'parent_id': 1,
         'name': '육아',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025668/b57d1a9c-3827-11e7-8959-b5bb63342e32.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026197/ef9c4a36-3831-11e7-9c59-bf5a8aa57cf9.png'
     },
 
     {
         'parent_id': 1,
         'name': '게임',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025671/c89c1e20-3827-11e7-9d90-092b7f837835.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026269/1d8894da-3833-11e7-8252-84c8b8f2b372.jpg'
     },
 
     {
         'parent_id': 1,
         'name': '스포츠',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025674/d999c02e-3827-11e7-9858-f2b3b5e34c6f.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026195/e3c26ba0-3831-11e7-900d-76f5e888c934.png'
     },
 
     {
         'parent_id': 1,
         'name': '스터디',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025642/f3a04f2a-3826-11e7-92ca-a2021b59d1f8.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026193/d78dcec4-3831-11e7-8cf3-a1df05ff8635.png'
     },
 
     {
         'parent_id': 1,
         'name': '반려동물',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025683/fb426c9e-3827-11e7-9f32-11311fa7185c.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026191/ca0a6ff0-3831-11e7-819b-893d73690602.png'
     },
 
     {
         'parent_id': 1,
         'name': '자동차',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025690/03dd6bce-3828-11e7-8d0e-5e933c14d601.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026187/b98246c6-3831-11e7-9154-457abbdc6304.png'
     },
 
     {
         'parent_id': 1,
         'name': '고민',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025695/2033d7d6-3828-11e7-814d-54f3769f7e55.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026180/a5534bb4-3831-11e7-876a-c45e9f619f7c.png'
     },
 
     {
         'parent_id': 1,
         'name': '다이어트',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26025707/4f2430ae-3828-11e7-8da5-ab0768a135d1.png'
+        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026164/838214ac-3831-11e7-844c-85ab92405875.png'
     },
 ]
 
