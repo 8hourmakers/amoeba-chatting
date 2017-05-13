@@ -71,12 +71,13 @@ class UserLoginAPIView(APIView):
 
     def delete(self, request, *args, **kwargs):
         request.user.auth_token.delete()
-        return Response(status=status.HTTP_200_OK)
+        return Response(data={'results': 'Logout Success'}, status=status.HTTP_200_OK)
 
 
-class UserTokenAPIView(RetrieveAPIView):
+class UserTokenAPIView(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
 
     def get(self, request, *args, **kwargs):
-        return Response(status=status.HTTP_200_OK)
+        serializer = UserSerializer(request.user)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)

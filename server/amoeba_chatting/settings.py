@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'chats',
     'favorites',
     'topics',
-    'users'
+    'users',
+    'channels'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -153,7 +154,7 @@ CHANNEL_LAYERS = {
         "CONFIG": {
             "hosts": [("localhost", 6379)],
         },
-        "ROUTING": "algotrade.routing.channel_routing",
+        "ROUTING": "amoeba_chatting.routing.channel_routing",
     },
 }
 

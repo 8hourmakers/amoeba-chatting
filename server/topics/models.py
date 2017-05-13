@@ -4,7 +4,7 @@ from django.db import models
 
 
 class TopicItem(models.Model):
-    name = models.CharField(max_length=30, null=False)
+    name = models.CharField(max_length=30, null=False, unique=True)
     parent_id = models.IntegerField(null=True)
     member_num = models.IntegerField(default=0)
     timestamp = models.DateTimeField(null=True)

@@ -4,7 +4,7 @@ import os
 from celery import Celery
 
 # set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'amoeba_chattings.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'amoeba_chatting.settings')
 
 from django.conf import settings  # noqa
 

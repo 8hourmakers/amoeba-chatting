@@ -10,17 +10,19 @@ log = logging.getLogger(__name__)
 
 @channel_session
 def ws_connect(message):
-    message.reply_channel.send(
-        json.dumps({
+    print(message.reply_channel.name)
+    message.reply_channel.send({
+        "text": json.dumps({
             "action": "reply_channel",
-            "topic_id": message.reply_channel.name,
+            "reply_channel": message.reply_channel.name,
         })
-    )
+    })
     path_particle = message.content['path'].split('/')
+    print('path', path_particle)
     if len(path_particle) == 5:
         group_name = path_particle[-1]
-        print('add', group_name)
         Group(group_name).add(message.reply_channel)
+
 
 
 @channel_session
@@ -46,8 +48,8 @@ def ws_receive(message):
 def new_chat_receive(chat_id):
     chat_item = ChatItem.objects.get(id=chat_id)
     print('Channel Name : ', chat_item.topic.name)
-    Group(chat_item.topic.id).send(
-        json.dumps({
+    Group(chat_item.topic.id).send({
+        "text": json.dumps({
             "action": "new_chat_receive",
             "payload": {
                 "id": chat_item.id,
@@ -56,16 +58,16 @@ def new_chat_receive(chat_id):
             },
             "timestamp": chat_item.timestamp.strftime("%Y-%M-%D %h:%m:%s")
         })
-    )
+    })
 
 def update_chat_room_member_num(topic_id):
     topic = TopicItem.objects.get(id=topic_id)
-    Group(topic.id).send(
-        json.dumps({
+    Group(topic.id).send({
+        "text": json.dumps({
             "action": "update_chat_room_member_num",
             "payload": {
                 "topic_id": topic.id,
                 "member_num": topic.member_num
             }
         })
-    )
+    })

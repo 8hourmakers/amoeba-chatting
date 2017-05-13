@@ -8,3 +8,4 @@ class ChatItem(models.Model):
     user = models.ForeignKey(get_user_model())
     content = models.CharField(max_length=500, blank=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+
