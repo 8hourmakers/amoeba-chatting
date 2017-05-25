@@ -17,6 +17,9 @@ class FavoriteListCreateAPIView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = FavoriteListCreateSerializer
 
+    def get_serializer_context(self):
+        return {'request': self.request}
+
     def get_queryset(self, *args, **kwargs):
         queryset_list = FavoriteItem.objects.filter(user=self.request.user).all()
         return queryset_list
@@ -40,6 +43,9 @@ class FavoriteDestroyAPIView(DestroyAPIView):
 
     permission_classes = [IsAuthenticated]
     serializer_class = FavoriteItem
+
+    def get_serializer_context(self):
+        return {'request': self.request}
 
     def delete(self, request, favorite_id, *args, **kwargs):
         if not FavoriteItem.objects.filter(id=favorite_id).exists():
