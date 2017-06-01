@@ -18,13 +18,16 @@ from topics.serializers import TopicSerializer
 from users.serializers import UserSerializer
 
 class ChatItemSerializer(ModelSerializer):
-    topic = TopicSerializer()
+    topic_id = SerializerMethodField()
     user = UserSerializer()
     timestamp = SerializerMethodField()
 
     class Meta:
         model = ChatItem
-        fields = ['id', 'user', 'topic', 'content', 'timestamp']
+        fields = ['id', 'user', 'topic_id', 'content', 'timestamp']
 
     def get_timestamp(self, obj):
         return obj.timestamp.strftime("%Y-%m-%d %H:%M:%S.%f")
+
+    def get_topic_id(self, obj):
+        return obj.topic.id
