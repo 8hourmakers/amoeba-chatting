@@ -15,10 +15,11 @@ import logging
 from topics.serializers import TopicSerializer
 from users.serializers import UserSerializer
 
+
 class FavoriteListCreateSerializer(ModelSerializer):
     topic = TopicSerializer()
     user = UserSerializer()
 
     class Meta:
         model = FavoriteItem
-        fields = ['id', 'user', 'topic']
+        fields = ['id', 'topic']

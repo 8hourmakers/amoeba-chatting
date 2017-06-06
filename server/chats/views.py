@@ -18,7 +18,6 @@ def index(request):
     return render(request, 'chats/index.html')
 
 
-
 class ChatItemListAPIView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ChatItemSerializer
