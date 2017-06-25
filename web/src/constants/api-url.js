@@ -7,6 +7,7 @@ const apiUrl = {
     topics: '/amoeba_chatting/api/topics/',
     topic: template('/amoeba_chatting/api/topics/<%= topicId %>/'),
     topicSearch: '/amoeba_chatting/api/topics/search/',
+    topicFavorites: '/amoeba_chatting/api/favorites/',
     chats: template('/amoeba_chatting/api/chats/<%= topicId %>/'),
     favorites: '/amoeba_chatting/api/favorites/',
     image: '/amoeba_chatting/api/images/',

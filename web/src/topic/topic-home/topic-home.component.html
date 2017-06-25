@@ -11,7 +11,7 @@
                 <i class="Icon" data-icon-name="search"></i>
             </button>
 
-            <button class="TopicHome__favoriteBtn">
+            <button ng-click="$ctrl.toggleFavorite()" class="TopicHome__favoriteBtn">
                 <i class="Icon" data-icon-name="{{ $ctrl.topics.topicInfo.isFavorite ? 'favorite-fill' : 'favorite' }}"></i>
             </button>
         </div>
@@ -45,7 +45,7 @@
                 <section class="SubTopicItem__content">
                     <div class="SubTopicItem__meta">
                         <h1 ng-bind="subTopic.name" class="SubTopicItem__title"></h1>
-                        <label class="SubTopicItem__subTopicNumbers"></label>
+                        <label ng-bind="subTopic.member_num + '명'" class="SubTopicItem__subTopicNumbers"></label>
                     </div>
                 </section>
             </div>

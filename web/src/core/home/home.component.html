@@ -1,17 +1,11 @@
 <div class="Home">
     <header class="Home__header">
         <div class="Home__headerLeft">
-            <button class="Home__chatBtn">
-                <i class="Icon" data-icon-name="chat"></i>
-            </button>
+            <img src="assets/images/logo.png" class="Home__logo" />
         </div>
 
         <div class="Home__headerRight">
-            <button class="Home__searchBtn">
-                <i class="Icon" data-icon-name="search"></i>
-            </button>
-
-            <button class="Home__favoriteBtn">
+            <button ng-click="$ctrl.hrefFavorite()" class="Home__favoriteBtn">
                 <i class="Icon" data-icon-name="favorite"></i>
             </button>
         </div>

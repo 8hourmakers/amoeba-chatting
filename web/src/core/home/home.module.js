@@ -1,11 +1,11 @@
 import angular from 'angular';
-import UIRouter from 'angular-ui-router';
+import StateModule from '../../core/state/state.module';
 import HttpModule from '../../core/http/http.module';
 import HomeComponent from './home.component';
 
 const HomeModule = angular
     .module('app.core.home', [
-        UIRouter,
+        StateModule,
         HttpModule,
     ])
     .component('appHome', HomeComponent)

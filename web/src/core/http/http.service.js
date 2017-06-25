@@ -59,6 +59,10 @@ class HttpService {
     put(url, options) {
         return this.request('PUT', url, options);
     }
+
+    delete(url, options) {
+        return this.request('DELETE', url, options);
+    }
 }
 
 HttpService.$inject = [

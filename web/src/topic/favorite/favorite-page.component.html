@@ -1,0 +1,27 @@
+<div class="FavoritePage">
+    <header class="FavoritePage__header">
+        <h1 class="FavoritePage__title">즐겨찾기</h1>
+        <button ng-click="$ctrl.back()" class="FavoritePage__closeBtn">
+            <i class="Icon" data-icon-name="cancel"></i>
+        </button>
+    </header>
+
+    <section class="FavoritePage__content">
+        <ul class="FavoritePage__list">
+            <li ng-repeat="topic in $ctrl.topics track by topic.id"
+                ng-click="$ctrl.enterSubTopic(topic)">
+                <div class="SubTopicItem">
+                    <div ng-style="{ 'background-image': 'url(' + topic.background_image_url + ')' }"
+                         class="SubTopicItem__img"></div>
+
+                    <section class="SubTopicItem__content">
+                        <div class="SubTopicItem__meta">
+                            <h1 ng-bind="topic.name" class="SubTopicItem__title"></h1>
+                            <label ng-bind="topic.member_num + '명'" class="SubTopicItem__subTopicNumbers"></label>
+                        </div>
+                    </section>
+                </div>
+            </li>
+        </ul>
+    </section>
+</div>

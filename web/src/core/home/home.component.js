@@ -3,8 +3,8 @@ import template from './home.component.html';
 import './home.component.less';
 
 class HomeController {
-    constructor($state, httpService) {
-        this.$state = $state;
+    constructor(stateService, httpService) {
+        this.stateService = stateService;
         this.httpService = httpService;
     }
 
@@ -25,19 +25,19 @@ class HomeController {
             });
     }
 
+    hrefFavorite() {
+        this.stateService.go('favorite');
+    }
+
     hrefTopicHome(topic) {
-        this.$state.go('topicHome', {
+        this.stateService.go('topicHome', {
             topicId: topic.id,
-            previousState: {
-                name: 'home',
-                params: {},
-            },
         });
     }
 }
 
 HomeController.$inject = [
-    '$state',
+    'stateService',
     'httpService',
 ];
 

@@ -1,10 +1,12 @@
 import template from './topic-home.component.html';
 import './topic-home.component.less';
+import apiUrl from '../../constants/api-url';
 
 class TopicHomeController {
-    constructor($q, stateService, CreateTopicModal, Topics) {
+    constructor($q, stateService, httpService, CreateTopicModal, Topics) {
         this.$q = $q;
         this.stateService = stateService;
+        this.httpService = httpService;
         this.createTopicModal = new CreateTopicModal();
         this.Topics = Topics;
     }
@@ -26,6 +28,23 @@ class TopicHomeController {
             ])
             .then(() => { this.isInitialized = true; })
             .catch(() => { this.isErrorCaught = true; });
+    }
+
+    toggleFavorite() {
+        const data = { topic_id: this.topicId };
+        const callback = () => {
+            this.topics.topicInfo.isFavorite = !this.topics.topicInfo.isFavorite;
+        };
+
+        if (this.topicInfo.isFavorite) {
+            this.httpService
+                .delete(`${apiUrl.topicFavorites}${this.topicId}/`)
+                .then(callback);
+        } else {
+            this.httpService
+                .post(apiUrl.topicFavorites, { data })
+                .then(callback);
+        }
     }
 
     back() {
@@ -63,6 +82,7 @@ class TopicHomeController {
 TopicHomeController.$inject = [
     '$q',
     'stateService',
+    'httpService',
     'CreateTopicModal',
     'Topics',
 ];
