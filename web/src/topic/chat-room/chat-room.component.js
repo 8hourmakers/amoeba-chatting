@@ -2,9 +2,9 @@ import template from './chat-room.component.html';
 import './chat-room.component.less';
 
 class ChatRoomController {
-    constructor($scope, $state, authService, Socket, Chatting, scrollManagerConstants) {
+    constructor($scope, stateService, authService, Socket, Chatting, scrollManagerConstants) {
         this.$scope = $scope;
-        this.$state = $state;
+        this.stateService = stateService;
         this.authService = authService;
         this.socket = new Socket();
         this.Chatting = Chatting;
@@ -12,9 +12,9 @@ class ChatRoomController {
     }
 
     $onInit() {
-        this.topicId = this.$state.params.topicId;
-        this.previousState = this.$state.params.previousState;
+        const params = this.stateService.getParams();
 
+        this.topicId = params.topicId;
         this.chatting = new this.Chatting(this.topicId);
 
         this.isInitialized = false;
@@ -48,7 +48,7 @@ class ChatRoomController {
     }
 
     back() {
-        this.$state.go(this.previousState.name, this.previousState.params);
+        this.stateService.go('topicHome', { topicId: this.chatting.topicId });
     }
 
     isAvaliable() {
@@ -100,7 +100,7 @@ class ChatRoomController {
 
 ChatRoomController.$inject = [
     '$scope',
-    '$state',
+    'stateService',
     'authService',
     'Socket',
     'Chatting',

@@ -2,15 +2,15 @@ function topicRoutingConfig($stateProvider) {
     $stateProvider
         .state('topicHome', {
             url: '/topic/:topicId',
-            params: {
-                previousState: true,
+            resolve: {
+                auth: ['authService', authService => authService.isAuthorized()],
             },
             template: '<app-topic-home></app-topic-home>',
         })
         .state('chatRoom', {
             url: '/chat/:topicId',
-            params: {
-                previousState: true,
+            resolve: {
+                auth: ['authService', authService => authService.isAuthorized()],
             },
             template: '<app-chat-room></app-chat-room>',
         });

@@ -1,6 +1,6 @@
 import angular from 'angular';
-import UIRouter from 'angular-ui-router';
 import AuthModule from '../../account/auth/auth.module';
+import StateModule from '../../core/state/state.module';
 import SocketModule from '../../core/socket/socket.module';
 import ScrollManagerModule from '../../shared/scroll-manager/scroll-manager.module';
 import ChatRoomComponent from './chat-room.component';
@@ -9,8 +9,8 @@ import ChatOrderFilter from './chat-order.filter';
 
 const ChatRoomModule = angular
     .module('app.topic.chatRoom', [
-        UIRouter,
         AuthModule,
+        StateModule,
         SocketModule,
         ScrollManagerModule,
     ])

@@ -2,9 +2,9 @@ import template from './topic-home.component.html';
 import './topic-home.component.less';
 
 class TopicHomeController {
-    constructor($q, $state, CreateTopicModal, Topics) {
+    constructor($q, stateService, CreateTopicModal, Topics) {
         this.$q = $q;
-        this.$state = $state;
+        this.stateService = stateService;
         this.createTopicModal = new CreateTopicModal();
         this.Topics = Topics;
     }
@@ -13,14 +13,8 @@ class TopicHomeController {
         this.isInitialized = false;
         this.isErrorCaught = false;
 
-        this.topicId = this.$state.params.topicId;
+        this.topicId = this.stateService.getParams().topicId;
         this.topics = new this.Topics(this.topicId);
-
-        if (this.$state.params.previousState.name) {
-            this.previousState = this.$state.params.previousState;
-        } else {
-            this.previousState = { name: 'home', params: {} };
-        }
 
         this.topicInfo = this.topics.topicInfo;
         this.subTopics = this.topics.subTopics;
@@ -35,26 +29,24 @@ class TopicHomeController {
     }
 
     back() {
-        this.$state.go(this.previousState.name, this.previousState.params);
+        if (this.topicInfo.parentId === 1) {
+            this.stateService.go('home');
+        } else {
+            this.stateService.go('topicHome', {
+                topicId: this.topicInfo.parentId,
+            });
+        }
     }
 
     enterChatRoom() {
-        this.$state.go('chatRoom', {
+        this.stateService.go('chatRoom', {
             topicId: this.topicId,
-            previousState: {
-                name: 'topicHome',
-                params: this.$state.params,
-            },
         });
     }
 
     enterSubTopic(subTopic) {
-        this.$state.go('topicHome', {
+        this.stateService.go('topicHome', {
             topicId: subTopic.id,
-            previousState: {
-                name: 'topicHome',
-                params: this.$state.params,
-            },
         });
     }
 
@@ -70,7 +62,7 @@ class TopicHomeController {
 
 TopicHomeController.$inject = [
     '$q',
-    '$state',
+    'stateService',
     'CreateTopicModal',
     'Topics',
 ];

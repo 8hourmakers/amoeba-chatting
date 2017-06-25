@@ -18,8 +18,10 @@ class Topics {
             .get(apiUrl.topic({ topicId: this.topicId }))
             .then((res) => {
                 this.topicInfo.name = res.data.name;
-                this.topicInfo.member_num = res.data.member_num;
+                this.topicInfo.memberNum = res.data.member_num;
                 this.topicInfo.backgroundImageUrl = res.data.background_image_url;
+                this.topicInfo.isFavorite = res.data.is_favorite;
+                this.topicInfo.parentId = res.data.parent_id;
             });
     }
 

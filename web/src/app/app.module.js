@@ -2,6 +2,7 @@ import angular from 'angular';
 import UIRouter from 'angular-ui-router';
 import HomeModule from '../core/home/home.module';
 import MainModule from '../core/main/main.module';
+import StateModule from '../core/state/state.module';
 import AuthModule from '../account/auth/auth.module';
 import LoginModule from '../account/login/login.module';
 import RegisterModule from '../account/register/register.module';
@@ -15,6 +16,7 @@ const AppModule = angular
         UIRouter,
         HomeModule,
         MainModule,
+        StateModule,
         AuthModule,
         LoginModule,
         RegisterModule,

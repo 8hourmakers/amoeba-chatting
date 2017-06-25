@@ -17,8 +17,8 @@ function appRoutingConfig($stateProvider, $locationProvider, $urlRouterProvider)
 
     $locationProvider.html5Mode(true);
 
-    $urlRouterProvider.when('', ['$state', ($state) => {
-        $state.go('home');
+    $urlRouterProvider.when('', ['stateService', (stateService) => {
+        stateService.go('home');
     }]);
 }
 
