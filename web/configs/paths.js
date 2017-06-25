@@ -2,7 +2,7 @@ const path = require('path');
 
 const rootPath = path.resolve(__dirname, '../');
 const srcPath = path.resolve(__dirname, '../src');
-const buildOutputPath = path.resolve(__dirname, '../build');
+const buildOutputPath = path.resolve(__dirname, '../dist');
 const appEntryPath = path.resolve(srcPath, 'main.js');
 const staticsPath = path.resolve(buildOutputPath, 'statics/');
 const assetsPath = path.resolve(srcPath, 'assets/');
