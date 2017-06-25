@@ -4,23 +4,23 @@ INIT_TOPICS = [
     {
         'parent_id': 1,
         'name': '음식',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026193/d78dcec4-3831-11e7-8cf3-a1df05ff8635.png'
+        'background_image_url': 'https://user-images.githubusercontent.com/8446067/27513367-60f5ce72-599e-11e7-9258-7e3eb4d08379.png'
     },
     {
         'parent_id': 1,
         'name': '19',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026375/b28e29e0-3834-11e7-8fbf-7da85189f660.png'
+        'background_image_url': 'https://user-images.githubusercontent.com/8446067/27513369-6ed71e06-599e-11e7-812e-b3a834bb69cf.png'
     },
     {
         'parent_id': 1,
         'name': '덕질',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026196/e911b7d2-3831-11e7-997f-318a84e809b8.png'
+        'background_image_url': 'https://user-images.githubusercontent.com/8446067/27513371-7a06e8f6-599e-11e7-8ce2-bb59cc8b5d99.png'
     },
 
     {
         'parent_id': 1,
         'name': '뷰티',
-        'background_image_url': 'https://cloud.githubusercontent.com/assets/8446067/26026197/ef9c4a36-3831-11e7-9c59-bf5a8aa57cf9.png'
+        'background_image_url': 'https://user-images.githubusercontent.com/8446067/27513374-8c515de8-599e-11e7-8ad1-b7a1847cf7bd.png'
     },
 
     {
