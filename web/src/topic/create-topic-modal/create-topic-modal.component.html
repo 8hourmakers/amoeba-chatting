@@ -1,7 +1,5 @@
 <app-modal modal-title="새로운 토픽 만들기" class="CreateTopicModal">
-    <div ng-if="$ctrl.isErrorCaught" class="CreateTopicModal__error">
-        유효하지 않은 토픽입니다. 다른 이름을 사용해 주세요.
-    </div>
+    <div ng-if="$ctrl.isErrorCaught" ng-bind="$ctrl.errorMessage" class="CreateTopicModal__error"></div>
 
     <div class="CreateTopicModal__image">
         <span ng-style="{ 'background-image': 'url(' + $ctrl.imageFileSrc + ')' }"></span>

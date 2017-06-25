@@ -32,6 +32,7 @@ class MainController {
                 this.$state.go('home');
             })
             .catch(() => {
+                this.errorMessage = '이메일 또는 비밀번호를 확인해주세요.';
                 this.isErrorCaught = true;
             })
             .finally(() => {
