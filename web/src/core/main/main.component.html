@@ -4,6 +4,8 @@
     <img src="/amoeba_chatting/assets/images/inner-logo.png" class="Main__logo" />
 
     <div class="Main__form">
+        <p ng-show="$ctrl.isErrorCaught" ng-bind="$ctrl.errorMessage" class="Main__errorMessage"></p>
+
         <div class="Main__input">
             <label class="Main__inputLeftLabel"></label>
             <input ng-model="$ctrl.email" type="text" placeholder="이메일" />
@@ -18,7 +20,7 @@
     </div>
 
     <div class="Main__foot">
-        <button ng-click="$ctrl.login()" class="Main__loginBtn">로그인</button>
+        <button ng-click="$ctrl.login()" ng-disabled="$ctrl.isRequesting" class="Main__loginBtn">로그인</button>
         <div class="Main__help">
             <span>회원이 아니세요?</span>
             <a ui-sref="register">가입하기</a>
