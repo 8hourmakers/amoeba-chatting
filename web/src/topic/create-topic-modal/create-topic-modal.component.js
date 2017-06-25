@@ -37,6 +37,12 @@ class CreateTopicModalController {
     }
 
     upload(imageData) {
+        if (!imageData) {
+            this.isErrorCaught = true;
+            this.errorMessage = '이미지를 업로드해 주세요.';
+            return;
+        }
+
         this.httpService
             .post(apiUrl.image, {
                 data: {
@@ -60,6 +66,7 @@ class CreateTopicModalController {
             })
             .catch(() => {
                 this.isErrorCaught = true;
+                this.errorMessage = '유효하지 않은 토픽입니다. 다른 이름을 사용해 주세요.';
             })
             .finally(() => {
                 this.isRequesting = false;
