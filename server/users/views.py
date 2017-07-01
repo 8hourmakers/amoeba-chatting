@@ -48,6 +48,7 @@ class UserCreateAPIView(CreateAPIView):
             user = serializer.save()
             token = Token.objects.get_or_create(user=user)
             res_data = {'token': str(token[0])}
+            res_data.update(serializer.data)
             return Response(res_data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
